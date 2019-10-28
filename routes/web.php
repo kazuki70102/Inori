@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware('verified')->group(function() {
+
+    // 本登録しているユーザーだけ表示
+    Route::get('verified', function(){
+        return '保登録済み';
+    });
+});
