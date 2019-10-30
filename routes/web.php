@@ -19,6 +19,10 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/profile', function(){
+    return view('index');
+});
+
 Route::middleware('verified')->group(function() {
 
     // 本登録しているユーザーだけ表示
