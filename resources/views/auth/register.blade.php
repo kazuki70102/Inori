@@ -40,6 +40,21 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">どちらとしてご利用ですか？</label>
+
+                            <div class="col-md-6 pt-2">
+                                <input type="radio" class="@error('role') is-invalid @enderror" name="role" value="driver">ドライバー
+                                <input type="radio" class="@error('role') is-invalid @enderror ml-2" name="role" value="rider">ライダー
+
+                                @error('role')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">パスワード</label>
 
                             <div class="col-md-6">
