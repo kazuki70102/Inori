@@ -6,10 +6,12 @@
         <div class="col-md-3 mt-5">
             <div class="bg-white p-3">
                 <div class="d-flex pb-4 align-items-end">
-                    <img src="https://pbs.twimg.com/profile_images/875091517198614528/eeNe_9Pc_400x400.jpg" class="rounded-circle mr-2" width="100">
+                    <img src="{{ $user->profile->profileImage() }}" class="rounded-circle mr-2" width="100">
                     <div>
-                        <h4>ユーザー名</h4>
-                        <p class="text-secondary m-0">機械工学類 ３年</p>
+                        <h4>{{ $user->name }}</h4>
+                        <p class="text-secondary m-0">
+                            {{ $user->profile->department }} {{ $user->profile->grade }}
+                        </p>
                     </div>
                 </div>
                 <div class="d-flex">
@@ -22,7 +24,7 @@
                         <br>2</p>
                     </div>
                 </div>
-                <p>よろしくよろしくよろしくよろしくよろしくよろしくよろしく</p>
+                <p>{{ $user->profile->introduction }}</p>
             </div>
         </div>
         <div class="col-md-9">

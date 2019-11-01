@@ -19,14 +19,15 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/profile', function(){
-    return view('index');
-});
+
 
 Route::middleware('verified')->group(function() {
-
     // 本登録しているユーザーだけ表示
     Route::get('verified', function(){
         return '保登録済み';
     });
+    Route::get('/profile', 'ProfilesController@index')->name('profile.index');
+    Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
+    Route::patch('/profile/{user}/edit', 'ProfilesController@update')->name('profile.update');
+
 });

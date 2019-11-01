@@ -40,6 +40,24 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($user) {
+            $user->profile()->create();
+        });
+    }
+
+
+
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+
     // パスワードリセットのメール送信
     public function sendPasswordResetNotification($token)
     {
