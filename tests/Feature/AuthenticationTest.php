@@ -56,7 +56,7 @@ class AuthenticationTest extends TestCase
     {
         // 認証済み
         $response = $this->actingAs($this->user);
-        $response = $this->get('/verified');
+        $response = $this->get(route('profile.index'));
 
         $response->assertStatus(200);
     }
@@ -65,9 +65,9 @@ class AuthenticationTest extends TestCase
     {
         // 認証されていない
         $this->user->email_verified_at = null;
-        
+
         $response = $this->actingAs($this->user);
-        $response = $this->get('/verified');
+        $response = $this->get(route('profile.index'));
 
         $response->assertRedirect('/email/verify');
     }
