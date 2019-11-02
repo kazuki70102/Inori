@@ -26,7 +26,7 @@
                 </div>
                 <p>{{ $user->profile->introduction }}</p>
                 <a href="/profile/{{ $user->profile->id }}/edit">プロフィール編集</a>
-                <a href="#">投稿する</a>
+                <a href="/post/create">投稿する</a>
             </div>
         </div>
         <div class="col-md-9">
