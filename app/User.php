@@ -40,6 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
 
+    // ユーザー生成時の処理
     protected static function boot()
     {
         parent::boot();
@@ -50,11 +51,14 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
-
-
     public function profile()
     {
         return $this->hasOne(Profile::class);
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 
 
