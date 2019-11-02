@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 
@@ -12,7 +13,9 @@ class ProfilesController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('profiles.index', compact('user'));
+        $posts = Post::with('user')->latest()->paginate(6);
+
+        return view('profiles.index', compact('user', 'posts'));
     }
 
     public function edit(User $user)

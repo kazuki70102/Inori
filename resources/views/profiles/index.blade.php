@@ -25,32 +25,40 @@
                     </div>
                 </div>
                 <p>{{ $user->profile->introduction }}</p>
-                <a href="/profile/{{ $user->profile->id }}/edit">プロフィール編集</a>
-                <a href="/post/create">投稿する</a>
+                <a href="{{ route('profile.edit', ['user' => $user]) }}">プロフィール編集</a>
+                <a href="{{ route('posts.create') }}">投稿する</a>
             </div>
         </div>
         <div class="col-md-9">
             <h2 class="mb-5">投稿一覧</h2>
             <div class="posts px-4">
-
-                <div class="post w-100 d-flex bg-white p-4 mb-4">
-                    <img src="https://pbs.twimg.com/profile_images/875091517198614528/eeNe_9Pc_400x400.jpg" class="rounded-circle mr-4" width="80" height="80">
-                    <div class="mr-3">
-                        <h5>ユーザー名２</h5>
-                        <p class="text-secondary">経済学類 4年</p>
-                        <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-                        <p class="text-secondary">2019-11-23</p>
-                    </div>
-                    <div style="width: 350px;">
-                        <div class="btn btn-outline-primary w-100 mb-3">
-                            リクエスト
+                @foreach($posts as $post)
+                    <div class="post w-100 d-flex p-4 mb-4">
+                        <img src="{{ $post->user->profile->profileImage() }}" class="rounded-circle mr-4" width="80" height="80">
+                        <div class="mr-3" style="width: 450px;">
+                            <h5>{{ $post->user->name }}</h5>
+                            <p class="text-secondary">
+                                {{ $post->user->profile->department }}
+                                {{ $post->user->profile->grade }}
+                            </p>
+                            <a href="{{ route('posts.show', ['post' => $post]) }}" class="link-black">
+                                <p>{{ $post->content }}</p>
+                            </a>
+                            <p class="text-secondary">{{ $post->created_at }}</p>
                         </div>
-                        <div class="btn btn-outline-dark w-100">
-                            フォロー
+                        <div>
+                            <div class="btn btn-outline-primary w-100 mb-3">
+                                リクエスト
+                            </div>
+                            <div class="btn btn-outline-dark w-100">
+                                フォロー
+                            </div>
                         </div>
                     </div>
-                </div>
-
+                @endforeach
+            </div>
+            <div class="d-flex justify-content-center">
+                {{ $posts->links() }}
             </div>
         </div>
     </div>

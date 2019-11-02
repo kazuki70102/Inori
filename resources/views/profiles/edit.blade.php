@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="container">
-    <form class="" action="/profile/{{ $user->id }}/edit" method="post" enctype="multipart/form-data">
+    <form class="" action="{{ route('profile.edit', ['user' => $user]) }}"
+          method="post" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
 

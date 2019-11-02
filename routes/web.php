@@ -28,6 +28,6 @@ Route::middleware('verified')->group(function() {
     Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
     Route::patch('/profile/{user}/edit', 'ProfilesController@update')->name('profile.update');
 
-    Route::resource('post', 'PostsController', ['except' => 'index']);
+    Route::resource('posts', 'PostsController', ['except' => 'index']);
 
 });
