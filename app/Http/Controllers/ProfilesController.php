@@ -49,4 +49,5 @@ class ProfilesController extends Controller
 
         return redirect(route('profile.index'));
     }
+    
 }

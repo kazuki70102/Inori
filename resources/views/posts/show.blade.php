@@ -9,9 +9,13 @@
                 <div class="mr-3">
                     <div class="d-flex align-items-baseline">
                         <h4 class="mr-5">{{ $post->user->name }}</h4>
-                        <div>
-                            <a href="#" class="mr-2">編集</a>
-                            <a href="#" class="text-danger">削除</a>
+                        <div class="d-flex">
+                            @can('update', $post)
+                                <a href="#" class="mr-2">編集</a>
+                            @endcan
+                            @can('delete', $post)
+                                <a href="/posts/{{$post->id}}/delete" class="text-danger">削除</a>
+                            @endcan
                         </div>
                     </div>
                     <p class="text-secondary">

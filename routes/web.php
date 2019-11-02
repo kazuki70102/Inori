@@ -28,6 +28,9 @@ Route::middleware('verified')->group(function() {
     Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
     Route::patch('/profile/{user}/edit', 'ProfilesController@update')->name('profile.update');
 
-    Route::resource('posts', 'PostsController', ['except' => 'index']);
+    Route::resource('posts', 'PostsController', [
+        'except' => ['index', 'destroy']
+    ]);
+    Route::get('posts/{post}/delete', 'PostsController@destroy')->name('post.destroy');
 
 });
