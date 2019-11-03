@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\User;
+use App\Post;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -12,6 +13,7 @@ class PostTest extends TestCase
     use RefreshDatabase;
 
     protected $user;
+    protected $post;
 
 
     protected function setUp(): void
@@ -33,4 +35,6 @@ class PostTest extends TestCase
             'content' => 'こんにちは！！'
         ]);
     }
+
+
 }
