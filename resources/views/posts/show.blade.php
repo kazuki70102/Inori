@@ -14,7 +14,7 @@
                                 <a href="#" class="mr-2">編集</a>
                             @endcan
                             @can('delete', $post)
-                                <a href="/posts/{{$post->id}}/delete" class="text-danger">削除</a>
+                                <a href="{{ route('posts.destroy', ['post' => $post]) }}" class="text-danger">削除</a>
                             @endcan
                         </div>
                     </div>

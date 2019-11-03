@@ -47,7 +47,7 @@ class ProfilesController extends Controller
             $imageArray ?? []
         ));
 
-        return redirect(route('profile.index'));
+        return redirect(route('profile.index'))->with('flash_message', 'プロフィールを更新しました。');
     }
-    
+
 }

@@ -31,6 +31,6 @@ Route::middleware('verified')->group(function() {
     Route::resource('posts', 'PostsController', [
         'except' => ['index', 'destroy']
     ]);
-    Route::get('posts/{post}/delete', 'PostsController@destroy')->name('post.destroy');
+    Route::get('posts/{post}/delete', 'PostsController@destroy')->name('posts.destroy');
 
 });

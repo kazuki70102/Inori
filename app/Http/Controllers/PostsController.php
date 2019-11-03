@@ -45,7 +45,7 @@ class PostsController extends Controller
 
         $post->update($data);
 
-        return redirect(route('profile.index'));
+        return redirect(route('profile.index'))->with('flash_message', '投稿を編集しました。');
     }
 
     public function destroy(Post $post)
