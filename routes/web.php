@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('verified')->group(function() {
     // 本登録しているユーザーだけ表示
+    Route::post('follow/{user}', 'FollowUserController@store')->middleware('dontself');
 
     Route::get('/profile', 'ProfilesController@index')->name('profile.index');
     Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
@@ -32,5 +33,6 @@ Route::middleware('verified')->group(function() {
         'except' => ['index', 'destroy']
     ]);
     Route::get('posts/{post}/delete', 'PostsController@destroy')->name('posts.destroy');
+
 
 });

@@ -61,6 +61,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Post::class);
     }
 
+    public function followUsers()
+    {
+        return $this->belongsToMany(self::class, 'follow_users', 'user_id', 'followed_user_id')
+            ->using(FollowUser::class);
+    }
+
 
     // パスワードリセットのメール送信
     public function sendPasswordResetNotification($token)

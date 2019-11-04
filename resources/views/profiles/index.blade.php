@@ -46,14 +46,16 @@
                             </a>
                             <p class="text-secondary">{{ $post->created_at }}</p>
                         </div>
-                        <div>
-                            <div class="btn btn-outline-primary w-100 mb-3">
-                                リクエスト
+                        @if(auth()->user()->id != $post->user->id)
+                            <div>
+                                <div class="btn btn-outline-primary w-100 mb-3">
+                                    リクエスト
+                                </div>
+                                <follow-button user-id="{{ $post->user->id }}"
+                                    follows="{{ $user->followUsers->contains($post->user->id) }}">
+                                </follow-button>
                             </div>
-                            <div class="btn btn-outline-dark w-100">
-                                フォロー
-                            </div>
-                        </div>
+                        @endif
                     </div>
                 @endforeach
             </div>
