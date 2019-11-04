@@ -17,11 +17,11 @@
                 <div class="d-flex">
                     <div class="mr-3">
                         <p>フォロー
-                        <br>223</p>
+                        <br>{{ $followingCount }}</p>
                     </div>
                     <div class="mr-3">
                         <p>フォロワー
-                        <br>2</p>
+                        <br>{{ $followersCount }}</p>
                     </div>
                 </div>
                 <p>{{ $user->profile->introduction }}</p>
@@ -47,10 +47,10 @@
                             <p class="text-secondary">{{ $post->created_at }}</p>
                         </div>
                         @if(auth()->user()->id != $post->user->id)
-                            <div>
-                                <div class="btn btn-outline-primary w-100 mb-3">
-                                    リクエスト
-                                </div>
+                            <div style="width: 130px;">
+                                <request-button user-id="{{ $post->user->id }}"
+                                    requests="{{ $user->requestUsers->contains($post->user->id) }}">
+                                </request-button>
                                 <follow-button user-id="{{ $post->user->id }}"
                                     follows="{{ $user->followUsers->contains($post->user->id) }}">
                                 </follow-button>

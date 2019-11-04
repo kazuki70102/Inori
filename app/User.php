@@ -67,6 +67,12 @@ class User extends Authenticatable implements MustVerifyEmail
             ->using(FollowUser::class);
     }
 
+    public function requestUsers()
+    {
+        return $this->belongsToMany(self::class, 'request_users', 'user_id', 'requested_user_id')
+            ->using(RequestUser::class);
+    }
+
 
     // パスワードリセットのメール送信
     public function sendPasswordResetNotification($token)

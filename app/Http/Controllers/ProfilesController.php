@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Post;
 use App\FollowUser;
+use App\RequestUser;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 
@@ -15,8 +16,10 @@ class ProfilesController extends Controller
     {
         $user = auth()->user();
         $posts = Post::with('user')->latest()->paginate(6);
+        $followersCount = FollowUser::where('followed_user_id', $user->id)->count();
+        $followingCount = FollowUser::where('user_id', $user->id)->count();
 
-        return view('profiles.index', compact('user', 'posts'));
+        return view('profiles.index', compact('user', 'posts', 'followersCount', 'followingCount'));
     }
 
     public function edit(User $user)
