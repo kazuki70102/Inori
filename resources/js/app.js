@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('follow-button', require('./components/FollowButton.vue').default);
 Vue.component('request-button', require('./components/RequestButton.vue').default);
+Vue.component('chat', require('./components/Chat.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

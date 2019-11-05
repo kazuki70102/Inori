@@ -23,18 +23,21 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('verified')->group(function() {
     // 本登録しているユーザーだけ表示
-    Route::post('/follow/{user}', 'FollowUserController@store')->middleware('dontself');
+    Route::post('follow/{user}', 'FollowUserController@store')->middleware('dontself');
+    Route::post('request/{user}', 'RequestUserController@store')->middleware('dontself');
 
-    Route::post('/request/{user}', 'RequestUserController@store')->middleware('dontself');
-
-    Route::get('/profile', 'ProfilesController@index')->name('profile.index');
-    Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
-    Route::patch('/profile/{user}/edit', 'ProfilesController@update')->name('profile.update');
+    Route::get('profile', 'ProfilesController@index')->name('profile.index');
+    Route::get('profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
+    Route::patch('profile/{user}/edit', 'ProfilesController@update')->name('profile.update');
 
     Route::resource('posts', 'PostsController', [
         'except' => ['index', 'destroy']
     ]);
     Route::get('posts/{post}/delete', 'PostsController@destroy')->name('posts.destroy');
+
+    Route::get('messages/index', 'MessagesController@index');
+    Route::get('ajax/messages', 'Ajax\MessagesController@index');
+    Route::post('ajax/messages', 'Ajax\MessagesController@create');
 
 
 });
