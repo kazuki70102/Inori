@@ -2,11 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Post;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
+    public function driver()
+    {
+        $user = auth()->user();
+        $posts = Post::where('user_role', 'driver')->with('user')->latest()->paginate(6);
+
+        return view('posts.driver', compact('user', 'posts'));
+    }
+
+    public function rider()
+    {
+        $user = auth()->user();
+        $posts = Post::where('user_role', 'rider')->with('user')->latest()->paginate(6);
+
+        return view('posts.rider', compact('user', 'posts'));
+    }
+
     public function create()
     {
         return view('posts.create');
@@ -14,9 +31,12 @@ class PostsController extends Controller
 
     public function store()
     {
-        $data = request()->validate([
+        $data = ['user_role' => auth()->user()->role];
+        $validate = request()->validate([
             'content' => 'required|max:255'
         ]);
+
+        $data = array_merge($data, $validate);
 
         auth()->user()->posts()->create($data);
 

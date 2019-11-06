@@ -24,8 +24,14 @@ class PostTest extends TestCase
 
         $this->user = factory(User::class)->create();
         $this->otheruser = factory(User::class)->create();
-        $this->post = $this->user->posts()->create(['content' => 'test1test1test1']);
-        $this->otherpost = $this->otheruser->posts()->create(['content' => 'test2test2test2']);
+        $this->post = $this->user->posts()->create([
+            'user_role' => $this->user->role,
+            'content' => 'test1test1test1'
+        ]);
+        $this->otherpost = $this->otheruser->posts()->create([
+            'user_role' => $this->user->role,
+            'content' => 'test2test2test2'
+        ]);
     }
 
 
@@ -37,6 +43,7 @@ class PostTest extends TestCase
         $response->assertRedirect(route('profile.index'));
         $this->assertDatabaseHas('posts', [
             'user_id' => $this->user->id,
+            'user_role' => $this->user->role,
             'content' => 'こんにちは！！'
         ]);
     }
@@ -50,15 +57,20 @@ class PostTest extends TestCase
 
         $this->assertDatabaseHas('posts', [
             'user_id' => $this->user->id,
+            'user_role' => $this->user->role,
             'content' => 'edittest'
         ]);
     }
 
     public function testDeletePost(): void
     {
-        $delpost = $this->user->posts()->create(['content' => 'deletetest']);
+        $delpost = $this->user->posts()->create([
+            'user_role' => $this->user->role,
+            'content' => 'deletetest'
+        ]);
         $this->assertDatabaseHas('posts', [
             'user_id' => $this->user->id,
+            'user_role' => $this->user->role,
             'content' => 'deletetest'
         ]);
 
@@ -66,6 +78,7 @@ class PostTest extends TestCase
 
         $this->assertDatabaseMissing('posts', [
             'user_id' => $this->user->id,
+            'user_role' => $this->user->role,
             'content' => 'delete'
         ]);
     }

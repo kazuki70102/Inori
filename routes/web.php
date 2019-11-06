@@ -32,6 +32,8 @@ Route::middleware('verified')->group(function() {
     Route::get('profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
     Route::patch('profile/{user}/edit', 'ProfilesController@update')->name('profile.update');
 
+    Route::get('posts/driver', 'PostsController@driver')->name('posts.driver');
+    Route::get('posts/rider', 'PostsController@rider')->name('posts.rider');
     Route::resource('posts', 'PostsController', [
         'except' => ['index', 'destroy']
     ]);
