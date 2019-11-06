@@ -23,22 +23,40 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('verified')->group(function() {
     // 本登録しているユーザーだけ表示
-    Route::post('follow/{user}', 'FollowUserController@store')->middleware('dontself');
 
-    Route::get('requests', 'RequestUserController@index')->name('requests.index');
-    Route::post('requests/{user}', 'RequestUserController@store')->middleware('dontself');
+    // フォロー
+    Route::post('follow/{user}', 'FollowUserController@store')
+        ->middleware('dontself');
 
-    Route::get('profile', 'ProfilesController@index')->name('profile.index');
-    Route::get('profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
-    Route::patch('profile/{user}/edit', 'ProfilesController@update')->name('profile.update');
+    // リクエスト
+    Route::get('requests', 'RequestUserController@index')
+        ->middleware('driver')
+        ->name('requests.index');
+    Route::post('requests/{user}', 'RequestUserController@store')
+        ->middleware('dontself');
+    Route::get('requests/{user}/delete', 'RequestUserController@destroy')
+        ->name('requests.delete');
 
-    Route::get('posts/driver', 'PostsController@driver')->name('posts.driver');
-    Route::get('posts/rider', 'PostsController@rider')->name('posts.rider');
+    // プロフィール
+    Route::get('profile', 'ProfilesController@index')
+        ->name('profile.index');
+    Route::get('profile/{user}/edit', 'ProfilesController@edit')
+        ->name('profile.edit');
+    Route::patch('profile/{user}/edit', 'ProfilesController@update')
+        ->name('profile.update');
+
+    // 投稿
+    Route::get('posts/driver', 'PostsController@driver')
+        ->name('posts.driver');
+    Route::get('posts/rider', 'PostsController@rider')
+        ->name('posts.rider');
     Route::resource('posts', 'PostsController', [
         'except' => ['index', 'destroy']
     ]);
-    Route::get('posts/{post}/delete', 'PostsController@destroy')->name('posts.destroy');
+    Route::get('posts/{post}/delete', 'PostsController@destroy')
+        ->name('posts.destroy');
 
+    // チャット
     Route::get('messages/index', 'MessagesController@index');
     Route::get('ajax/messages', 'Ajax\MessagesController@index');
     Route::post('ajax/messages', 'Ajax\MessagesController@create');

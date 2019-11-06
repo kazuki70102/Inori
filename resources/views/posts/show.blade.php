@@ -24,14 +24,15 @@
                     </p>
                     <p class="lead">{{ $post->content }}</p>
                     <p class="text-secondary">{{ $post->created_at }}</p>
-                    <div>
-                        <div class="btn btn-outline-primary mr-3">
-                            リクエスト
+                    @if(auth()->user()->id != $post->user->id)
+                        <div class="d-flex">
+                            @if($post->user_role == 'driver')
+                                <request-button class="mr-2" user-id="{{ $post->user->id }}" requests="{{ $user->requestUsers->contains($post->user->id) }}"></request-button>
+                            @endif
+                            <follow-button user-id="{{ $post->user->id }}"
+                                follows="{{ $user->followUsers->contains($post->user->id) }}"></follow-button>
                         </div>
-                        <div class="btn btn-outline-dark">
-                            フォロー
-                        </div>
-                    </div>
+                    @endif
                 </div>
 
             </div>

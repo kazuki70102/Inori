@@ -19,4 +19,11 @@ class RequestUserController extends Controller
     {
         return auth()->user()->requestUsers()->toggle($user->id);
     }
+
+    public function destroy(User $user)
+    {
+        $user->requestUsers()->toggle(auth()->user()->id);
+
+        return redirect(route('requests.index'));
+    }
 }

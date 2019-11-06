@@ -34,8 +34,14 @@
                             </p>
                         </div>
                         <div class="d-flex align-items-center ml-auto">
-                            <button type="button" class="btn btn-primary mr-3">承認する</button>
-                            <button type="button" class="btn btn-outline-danger">削除</button>
+                            <button type="button" class="btn btn-primary mr-3">
+                                承認する
+                            </button>
+                            <a href="{{ route('requests.delete', ['user' => $requestedUser]) }}">
+                                <button type="button" class="btn btn-outline-danger">
+                                    削除
+                                </button>
+                            </a>
                         </div>
                     </div>
                 @endforeach
