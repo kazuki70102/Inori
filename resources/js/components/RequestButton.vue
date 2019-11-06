@@ -20,7 +20,7 @@
 
         methods: {
             requestUser() {
-                axios.post('/request/' + this.userId)
+                axios.post('/requests/' + this.userId)
                      .then(response => {
                          this.status = ! this.status;
 

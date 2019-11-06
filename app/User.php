@@ -73,6 +73,18 @@ class User extends Authenticatable implements MustVerifyEmail
             ->using(RequestUser::class);
     }
 
+    public function requestedUsers()
+    {
+        $data = RequestUser::where('requested_user_id', $this->id)->get();
+        $requestedUsers = [];
+
+        foreach($data as $line) {
+            array_push($requestedUsers, User::find($line->user_id));
+        }
+
+        return $requestedUsers;
+    }
+
 
     // パスワードリセットのメール送信
     public function sendPasswordResetNotification($token)

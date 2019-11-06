@@ -1971,7 +1971,7 @@ __webpack_require__.r(__webpack_exports__);
     requestUser: function requestUser() {
       var _this = this;
 
-      axios.post('/request/' + this.userId).then(function (response) {
+      axios.post('/requests/' + this.userId).then(function (response) {
         _this.status = !_this.status;
         console.log(response.data);
       })["catch"](function (errors) {

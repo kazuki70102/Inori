@@ -29,6 +29,7 @@
                 <a href="{{ route('posts.create') }}">投稿する</a>
             </div>
         </div>
+        
         <div class="col-md-9">
             <h2 class="mb-5">投稿一覧</h2>
             <div class="posts px-4">
