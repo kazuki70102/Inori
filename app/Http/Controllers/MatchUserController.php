@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\MatchUser;
+use App\RequestUser;
 use Illuminate\Http\Request;
 
 class MatchUserController extends Controller
@@ -11,6 +12,7 @@ class MatchUserController extends Controller
     public function index()
     {
         $user = auth()->user();
+
         if ($user->role == 'driver') {
             $matchUsers = $user->getMatchRiders();
         } else {
@@ -24,6 +26,11 @@ class MatchUserController extends Controller
     {
         $riderId = $request->rider_id;
         auth()->user()->MatchUsers()->attach($riderId);
+
+        RequestUser::where('user_id', $riderId)
+                ->where('requested_user_id', auth()->user()->id)
+                ->delete();
+
 
         return redirect(route('matches.index'))->with('flash_message', 'マッチングしました！');
     }

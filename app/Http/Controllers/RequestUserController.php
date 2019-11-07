@@ -12,6 +12,7 @@ class RequestUserController extends Controller
     {
         $user = auth()->user();
         $requestedUsers = $user->getrequestedUsers();
+        
         return view('requests.index', compact('user', 'requestedUsers'));
     }
 
