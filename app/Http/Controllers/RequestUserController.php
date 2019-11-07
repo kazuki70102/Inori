@@ -11,7 +11,7 @@ class RequestUserController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $requestedUsers = $user->requestedUsers();
+        $requestedUsers = $user->getrequestedUsers();
         return view('requests.index', compact('user', 'requestedUsers'));
     }
 
@@ -24,6 +24,7 @@ class RequestUserController extends Controller
     {
         $user->requestUsers()->toggle(auth()->user()->id);
 
-        return redirect(route('requests.index'));
+        return redirect(route('requests.index'))
+            ->with('flash_message', 'リクエストを削除しました。');
     }
 }

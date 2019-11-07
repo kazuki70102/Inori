@@ -73,7 +73,8 @@ class User extends Authenticatable implements MustVerifyEmail
             ->using(RequestUser::class);
     }
 
-    public function requestedUsers()
+    // リクエストされているユーザーの取得
+    public function getrequestedUsers()
     {
         $data = RequestUser::where('requested_user_id', $this->id)->get();
         $requestedUsers = [];
@@ -83,6 +84,38 @@ class User extends Authenticatable implements MustVerifyEmail
         }
 
         return $requestedUsers;
+    }
+
+    public function matchUsers()
+    {
+        return $this->belongsToMany(self::class, 'match_users', 'driver_id', 'rider_id')
+            ->using(MatchUser::class);
+    }
+
+    // マッチしてるライダーの取得
+    public function getMatchRiders()
+    {
+        $data = MatchUser::where('driver_id', $this->id)->get();
+        $matchRiders = [];
+
+        foreach($data as $line) {
+            array_push($matchRiders, User::find($line->rider_id));
+        }
+
+        return $matchRiders;
+    }
+
+    // マッチしてるドライバーの取得
+    public function getMatchDrivers()
+    {
+        $data = MatchUser::where('rider_id', $this->id)->get();
+        $matchDrivers = [];
+
+        foreach($data as $line) {
+            array_push($matchDrivers, User::find($line->driver_id));
+        }
+
+        return $matchDrivers;
     }
 
 

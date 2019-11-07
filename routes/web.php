@@ -34,27 +34,28 @@ Route::middleware('verified')->group(function() {
         ->name('requests.index');
     Route::post('requests/{user}', 'RequestUserController@store')
         ->middleware('dontself');
-    Route::get('requests/{user}/delete', 'RequestUserController@destroy')
-        ->name('requests.delete');
+    Route::delete('requests/{user}', 'RequestUserController@destroy')
+        ->middleware('driver')
+        ->name('requests.destroy');
 
     // プロフィール
-    Route::get('profile', 'ProfilesController@index')
-        ->name('profile.index');
-    Route::get('profile/{user}/edit', 'ProfilesController@edit')
-        ->name('profile.edit');
-    Route::patch('profile/{user}/edit', 'ProfilesController@update')
-        ->name('profile.update');
+    Route::get('profile', 'ProfilesController@index')->name('profile.index');
+    Route::get('profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
+    Route::patch('profile/{user}/edit', 'ProfilesController@update')->name('profile.update');
 
     // 投稿
-    Route::get('posts/driver', 'PostsController@driver')
-        ->name('posts.driver');
-    Route::get('posts/rider', 'PostsController@rider')
-        ->name('posts.rider');
+    Route::get('posts/driver', 'PostsController@driver')->name('posts.driver');
+    Route::get('posts/rider', 'PostsController@rider')->name('posts.rider');
     Route::resource('posts', 'PostsController', [
         'except' => ['index', 'destroy']
     ]);
     Route::get('posts/{post}/delete', 'PostsController@destroy')
+        ->middleware('dirver')
         ->name('posts.destroy');
+
+    // マッチ
+    Route::get('matches', 'MatchUserController@index')->name('matches.index');
+    Route::post('matches', 'MatchUserController@store')->name('matches.store');
 
     // チャット
     Route::get('messages/index', 'MessagesController@index');

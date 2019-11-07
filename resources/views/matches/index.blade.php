@@ -21,33 +21,20 @@
         </div>
 
         <div class="col-md-8 offset-1">
-            <h2 class="mb-5">リクエスト</h2>
+            <h2 class="mb-5">マッチングしたユーザー</h2>
             <div class="requests">
-                @foreach($requestedUsers as $requestedUser)
+                @foreach($matchUsers as $matchUser)
                     <div class="request w-100 d-flex p-3 mb-4 bg-white">
-                        <img src="{{ $requestedUser->profile->profileImage() }}" class="rounded-circle mr-4" width="80" height="80">
+                        <img src="{{ $matchUser->profile->profileImage() }}" class="rounded-circle mr-4" width="80" height="80">
                         <div class="mt-2">
-                            <h4 class="mb-0">{{ $requestedUser->name }}</h4>
+                            <h4 class="mb-0">{{ $matchUser->name }}</h4>
                             <p class="text-secondary">
-                                {{ $requestedUser->profile->department }}
-                                {{ $requestedUser->profile->grade }}
+                                {{ $matchUser->profile->department }}
+                                {{ $matchUser->profile->grade }}
                             </p>
                         </div>
                         <div class="d-flex align-items-center ml-auto">
-                            <form class="" action="{{ route('matches.store') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="rider_id" value="{{ $requestedUser->id }}">
-                                <button class="btn btn-primary mr-3">
-                                    承認する
-                                </button>
-                            </form>
-                            <form class="" action="{{route('requests.destroy', ['user' => $requestedUser])}}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-outline-danger">
-                                    削除
-                                </button>
-                            </form>
+
                         </div>
                     </div>
                 @endforeach

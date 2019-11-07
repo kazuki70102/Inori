@@ -40,7 +40,7 @@ class PostsController extends Controller
 
         auth()->user()->posts()->create($data);
 
-        return redirect(route('profile.index'))->with('flash_message', '投稿しました。');
+        return redirect(route('profile.index'))->with('flash_message', '投稿しました！');
     }
 
     public function show(Post $post)
@@ -66,7 +66,7 @@ class PostsController extends Controller
 
         $post->update($data);
 
-        return redirect(route('profile.index'))->with('flash_message', '投稿を編集しました。');
+        return redirect(route('profile.index'))->with('flash_message', '投稿を編集しました！');
     }
 
     public function destroy(Post $post)
@@ -75,7 +75,7 @@ class PostsController extends Controller
 
         Post::find($post->id)->delete();
 
-        return redirect(route('profile.index'))->with('flash_message', '投稿を削除しました。');
+        return redirect(route('profile.index'))->with('flash_message', '投稿を削除しました！');
     }
 
 
