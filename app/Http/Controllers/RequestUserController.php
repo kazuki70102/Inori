@@ -12,13 +12,15 @@ class RequestUserController extends Controller
     {
         $user = auth()->user();
         $requestedUsers = $user->getrequestedUsers();
-        
+
         return view('requests.index', compact('user', 'requestedUsers'));
     }
 
     public function store(User $user)
     {
-        return auth()->user()->requestUsers()->toggle($user->id);
+        auth()->user()->requestUsers()->toggle($user->id);
+
+        return redirect(route('posts.driver'))->with('flash_message', 'リクエストを送信しました');
     }
 
     public function destroy(User $user)

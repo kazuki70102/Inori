@@ -27,7 +27,18 @@
                     @if(auth()->user()->id != $post->user->id)
                         <div class="d-flex">
                             @if($post->user_role == 'driver')
-                                <request-button class="mr-2" user-id="{{ $post->user->id }}" requests="{{ $user->requestUsers->contains($post->user->id) }}"></request-button>
+                                @if($user->requestUsers->contains($post->user->id))
+                                    <form action="{{ route('requests.store', ['user' => $post->user]) }}" method="post">
+                                        @csrf
+                                        <button class="btn btn-outline-primary mb-3">
+                                            リクエスト
+                                        </button>
+                                    </form>
+                                @else
+                                    <div class="btn btn-outline-primary mb-3 mr-3">
+                                        リクエスト済み
+                                    </div>
+                                @endif
                             @endif
                             <follow-button user-id="{{ $post->user->id }}"
                                 follows="{{ $user->followUsers->contains($post->user->id) }}"></follow-button>

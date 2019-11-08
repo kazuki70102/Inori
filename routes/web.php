@@ -33,7 +33,8 @@ Route::middleware('verified')->group(function() {
         ->middleware('driver')
         ->name('requests.index');
     Route::post('requests/{user}', 'RequestUserController@store')
-        ->middleware('dontself');
+        ->middleware('dontself')
+        ->name('requests.store');
     Route::delete('requests/{user}', 'RequestUserController@destroy')
         ->middleware('driver')
         ->name('requests.destroy');

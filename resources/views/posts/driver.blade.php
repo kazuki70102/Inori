@@ -23,9 +23,18 @@
                         </div>
                         @if(auth()->user()->id != $post->user->id)
                             <div style="width: 130px;">
-                                <request-button user-id="{{ $post->user->id }}"
-                                    requests="{{ $user->requestUsers->contains($post->user->id) }}">
-                                </request-button>
+                                @if($user->requestUsers->contains($post->user->id))
+                                    <div class="btn btn-outline-primary w-100 mb-3">
+                                        リクエスト済み
+                                    </div>
+                                @else
+                                    <form action="{{ route('requests.store', ['user' => $post->user]) }}" method="post">
+                                        @csrf
+                                        <button class="btn btn-outline-primary w-100 mb-3">
+                                            リクエスト
+                                        </button>
+                                    </form>
+                                @endif
                                 <follow-button user-id="{{ $post->user->id }}"
                                     follows="{{ $user->followUsers->contains($post->user->id) }}">
                                 </follow-button>
