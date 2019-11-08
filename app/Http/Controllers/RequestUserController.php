@@ -18,6 +18,11 @@ class RequestUserController extends Controller
 
     public function store(User $user)
     {
+        // マッチしてた場合リダイレクト
+        if ($user->MatchUsers->contains(auth()->user()->id)) {
+            return redirect(route('posts.driver'));
+        }
+        
         auth()->user()->requestUsers()->toggle($user->id);
 
         return redirect(route('posts.driver'))->with('flash_message', 'リクエストを送信しました');

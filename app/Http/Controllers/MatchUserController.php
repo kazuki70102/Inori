@@ -25,7 +25,7 @@ class MatchUserController extends Controller
     public function store(Request $request)
     {
         $riderId = $request->rider_id;
-        auth()->user()->MatchUsers()->attach($riderId);
+        auth()->user()->MatchUsers()->toggle($riderId);
 
         RequestUser::where('user_id', $riderId)
                 ->where('requested_user_id', auth()->user()->id)
