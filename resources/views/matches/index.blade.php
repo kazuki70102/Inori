@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@inject('match', 'App\Services\MatchService')
 
 @section('content')
 <div class="container">
@@ -34,14 +35,16 @@
                             </p>
                         </div>
                         <div class="d-flex align-items-center ml-auto">
-
+                            <a href="messages/{{ $match->getMatchId($matchUser) }}">
+                                <button class="btn btn-primary mr-3">
+                                    メッセージを送る
+                                </button>
+                            </a>
                         </div>
                     </div>
                 @endforeach
             </div>
 
-            <div class="d-flex justify-content-center">
-            </div>
         </div>
     </div>
 </div>

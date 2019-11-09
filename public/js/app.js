@@ -1852,6 +1852,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: [],
   data: function data() {
@@ -1873,7 +1887,7 @@ __webpack_require__.r(__webpack_exports__);
     getMessages: function getMessages() {
       var _this2 = this;
 
-      var url = '/ajax/messages';
+      var url = '/messages';
       axios.get(url).then(function (response) {
         _this2.messages = response.data;
       });
@@ -1881,7 +1895,7 @@ __webpack_require__.r(__webpack_exports__);
     send: function send() {
       var _this3 = this;
 
-      var url = '/ajax/messages';
+      var url = '/messages';
       var params = {
         message: this.message
       };
@@ -47084,48 +47098,86 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _vm._l(_vm.messages, function(m) {
-        return _c("div", [
-          _c("span", { domProps: { textContent: _vm._s(m.created_at) } }),
-          _vm._v(": \n        "),
-          _c("span", { domProps: { textContent: _vm._s(m.message) } })
-        ])
-      }),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "chat" } }, [
-        _c("textarea", {
-          directives: [
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        {
+          staticClass: "col-md-8 offset-3 bg-white border border-secondary p-4",
+          staticStyle: { height: "600px" }
+        },
+        [
+          _c(
+            "div",
+            { staticStyle: { height: "420px", "overflow-y": "scroll" } },
+            _vm._l(_vm.messages, function(m) {
+              return _c("div", [
+                _c("span", { domProps: { textContent: _vm._s(m.created_at) } }),
+                _vm._v(": \n                    "),
+                _c("span", { domProps: { textContent: _vm._s(m.message) } })
+              ])
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
             {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.message,
-              expression: "message"
-            }
-          ],
-          domProps: { value: _vm.message },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.message = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c("button", { attrs: { type: "button" }, on: { click: _vm.send } }, [
-          _vm._v("送信")
-        ])
-      ])
-    ],
-    2
-  )
+              staticClass: "bg-white",
+              staticStyle: { height: "150px" },
+              attrs: { id: "chat" }
+            },
+            [
+              _c("div", { staticClass: "border border-secondary w-100" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "border-bottom border-secondary p-1 text-right"
+                  },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary px-1 py-0",
+                        on: { click: _vm.send }
+                      },
+                      [_vm._v("送信")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.message,
+                      expression: "message"
+                    }
+                  ],
+                  staticClass: "w-100 border-0 p-2 ",
+                  staticStyle: {
+                    height: "100px",
+                    resize: "none",
+                    outline: "none"
+                  },
+                  domProps: { value: _vm.message },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.message = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]
+          )
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

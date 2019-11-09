@@ -59,9 +59,9 @@ Route::middleware('verified')->group(function() {
     Route::post('matches', 'MatchUserController@store')->name('matches.store');
 
     // チャット
-    Route::get('messages/index', 'MessagesController@index');
-    Route::get('ajax/messages', 'Ajax\MessagesController@index');
-    Route::post('ajax/messages', 'Ajax\MessagesController@create');
+    Route::get('messages', 'MessagesController@index');
+    Route::post('messages', 'MessagesController@create');
+    Route::get('messages/{matchId}', 'MessagesController@show');
 
 
 });
