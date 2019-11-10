@@ -60,8 +60,8 @@ Route::middleware('verified')->group(function() {
 
     // チャット
     Route::get('messages', 'MessagesController@index');
-    Route::post('messages', 'MessagesController@create');
-    Route::get('messages/{matchId}', 'MessagesController@show');
+    Route::post('messages', 'MessagesController@store');
+    Route::get('messages/{matchId}', 'MessagesController@show')->name('messages.show');
 
 
 });

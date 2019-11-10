@@ -1867,7 +1867,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: [],
+  props: ['userId', 'matchUserId'],
   data: function data() {
     return {
       message: '',
@@ -1897,7 +1897,9 @@ __webpack_require__.r(__webpack_exports__);
 
       var url = '/messages';
       var params = {
-        message: this.message
+        message: this.message,
+        send_user_id: this.userId,
+        recieve_user_id: this.matchUserId
       };
       axios.post(url, params).then(function (response) {
         _this3.message = '';

@@ -35,11 +35,12 @@
                             </p>
                         </div>
                         <div class="d-flex align-items-center ml-auto">
-                            <a href="messages/{{ $match->getMatchId($matchUser) }}">
+                            <form action="{{ route('messages.show', ['matchId' => $match->getMatchId($matchUser)]) }}" method="get">
+                                <input type="hidden" name="matchUserId" value="{{ $matchUser->id }}">
                                 <button class="btn btn-primary mr-3">
                                     メッセージを送る
                                 </button>
-                            </a>
+                            </form>
                         </div>
                     </div>
                 @endforeach

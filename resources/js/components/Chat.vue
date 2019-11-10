@@ -28,7 +28,7 @@
 
 <script>
     export default {
-        props: [],
+        props: ['userId', 'matchUserId'],
 
         data: function() {
             return {
@@ -60,7 +60,11 @@
 
             send() {
                 const url = '/messages';
-                const params = { message: this.message };
+                const params = {
+                    message: this.message ,
+                    send_user_id: this.userId,
+                    recieve_user_id: this.matchUserId
+                };
                 axios.post(url, params)
                      .then(response => {
                          this.message = '';

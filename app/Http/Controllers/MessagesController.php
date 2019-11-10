@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Message;
 use App\Events\MessageCreated;
 use App\Http\Controllers\Controller;
@@ -14,21 +15,31 @@ class MessagesController extends Controller
 
     public function index()
     {
-        return Message::orderBy('id', 'desc')->get();
+        return Message::orderBy('created_at', 'asc')->get();
     }
 
     public function show(Request $request)
     {
         Gate::authorize('show-message', $request->matchId);
 
-        return view('messages.index');
+        $user = auth()->user();
+        $matchUser = User::find($request->matchUserId);
+
+        return view('messages.show', compact('user', 'matchUser'));
 
 
     }
 
-    public function create(Request $request)
+    public function store()
     {
-        $message = Message::create(['message' => $request->message]);
+        $data = request()->validate([
+            'message' => 'required',
+            'send_user_id' => 'required',
+            'recieve_user_id' => 'required'
+        ]);
+
+
+        $message = Message::create($data);
 
         event(new MessageCreated($message));
     }
