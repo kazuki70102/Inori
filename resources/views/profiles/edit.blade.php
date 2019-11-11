@@ -32,7 +32,8 @@
                     <label for="grade" class="col-md-4 col-form-label">学年</label>
 
                     <select id="grade"
-                            class="form-control @error('grade') is-invalid @enderror"          name="grade">
+                            class="form-control @error('grade') is-invalid @enderror"
+                            name="grade">
                         <option value="1年生">1年生</option>
                         <option value="2年生">2年生</option>
                         <option value="3年生">3年生</option>
@@ -61,22 +62,13 @@
                 <div class="row">
                     <label for="image" class="col-md-4 col-form-label">プロフィール画像</label>
 
-                    <input id="image" type="file" name="image" class="form-control-file" value="">
+                    <input id="image" type="file" name="image" class="form-control-file @error('image') is-invalid @enderror" value="">
 
                     @error('image')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                    <!-- @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                            </ul>
-                        </div>
-                    @endif -->
                 </div>
 
                 <div class="row pt-4">
