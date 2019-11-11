@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\User;
 use App\RequestUser;
+use App\MatchUser;
 
 class RequestTest extends TestCase
 {
@@ -60,6 +61,19 @@ class RequestTest extends TestCase
             'user_id' => $this->otheruser->id,
             'requested_user_id' => $this->user->id
         ]);
+    }
+
+    public function testRequestRedirect()
+    {
+        MatchUser::create([
+            'driver_id' => $this->user->id,
+            'rider_id' => $this->otheruser->id
+        ]);
+
+        $response = $this->actingAs($this->otheruser);
+        $response = $this->json('POST', route('requests.store', ['user' => $this->user]));
+
+        $response->assertRedirect(route('posts.driver'));
     }
 
 }
