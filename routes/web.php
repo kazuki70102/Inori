@@ -51,7 +51,6 @@ Route::middleware('verified')->group(function() {
         'except' => ['index', 'destroy']
     ]);
     Route::get('posts/{post}/delete', 'PostsController@destroy')
-        ->middleware('dirver')
         ->name('posts.destroy');
 
     // マッチ

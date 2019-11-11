@@ -30,10 +30,14 @@ class ProfileTest extends TestCase
 
     public function testEditProfile(): void
     {
+        Storage::fake('testImages');
+        $file = UploadedFile::fake()->image('test.jpg');
+
         $data = [
             'department' => '経済学類',
             'grade' => '4年生',
             'introduction' => 'こんにちは',
+            'image' => $file
         ];
 
         $response = $this->actingAs($this->user);
@@ -44,8 +48,10 @@ class ProfileTest extends TestCase
             'user_id' => $this->user->id,
             'department' => '経済学類',
             'grade' => '4年生',
-            'introduction' => 'こんにちは'
+            'introduction' => 'こんにちは',
+            'image' => 'profile/' . $file->hashName()
         ]);
+
     }
 
     public function testEditOtherProfile(): void
