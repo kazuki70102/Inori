@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Gate;
 class MessagesController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        return Message::orderBy('created_at', 'asc')->get();
+        return Message::where('match_id', $request->matchId)
+                    ->orderBy('created_at', 'asc')
+                    ->get();
     }
 
     public function show(Request $request)
@@ -34,8 +36,8 @@ class MessagesController extends Controller
     {
         $data = request()->validate([
             'message' => 'required',
+            'match_id' => 'required',
             'send_user_id' => 'required',
-            'recieve_user_id' => 'required'
         ]);
 
 

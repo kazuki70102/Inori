@@ -1866,8 +1866,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['userId', 'matchUserId'],
+  props: ['userId', 'matchUserId', 'matchUserName', 'matchUserImage', 'matchId'],
   data: function data() {
     return {
       message: '',
@@ -1878,8 +1888,11 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     this.getMessages();
+    this.scroll();
     Echo.channel('chat').listen('MessageCreated', function (e) {
       _this.getMessages();
+
+      _this.scroll();
     });
     console.log('Component mounted.');
   },
@@ -1888,7 +1901,12 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       var url = '/messages';
-      axios.get(url).then(function (response) {
+      var params = {
+        matchId: this.matchId
+      };
+      axios.get(url, {
+        params: params
+      }).then(function (response) {
         _this2.messages = response.data;
       });
     },
@@ -1898,12 +1916,17 @@ __webpack_require__.r(__webpack_exports__);
       var url = '/messages';
       var params = {
         message: this.message,
-        send_user_id: this.userId,
-        recieve_user_id: this.matchUserId
+        match_id: this.matchId,
+        send_user_id: this.userId
       };
       axios.post(url, params).then(function (response) {
         _this3.message = '';
       });
+    },
+    scroll: function scroll() {
+      $('#target').animate({
+        scrollTop: $('#target').get(0).scrollHeight
+      }, 'fast');
     }
   }
 });
@@ -47111,12 +47134,36 @@ var render = function() {
         [
           _c(
             "div",
-            { staticStyle: { height: "420px", "overflow-y": "scroll" } },
+            {
+              staticStyle: { height: "420px", overflow: "scroll" },
+              attrs: { id: "target" }
+            },
             _vm._l(_vm.messages, function(m) {
-              return _c("div", [
-                _c("span", { domProps: { textContent: _vm._s(m.created_at) } }),
-                _vm._v(": \n                    "),
-                _c("span", { domProps: { textContent: _vm._s(m.message) } })
+              return _c("div", { staticClass: "mb-3" }, [
+                m.send_user_id === _vm.matchUserId
+                  ? _c("div", { staticClass: "d-flex" }, [
+                      _c("img", {
+                        staticClass: "rounded-circle mr-3",
+                        attrs: {
+                          src: _vm.matchUserImage,
+                          width: "40",
+                          height: "40"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "balloon1-left" }, [
+                        _c("p", {
+                          domProps: { textContent: _vm._s(m.message) }
+                        })
+                      ])
+                    ])
+                  : _c("div", { staticClass: "text-right" }, [
+                      _c("div", { staticClass: "balloon1-right mr-5" }, [
+                        _c("p", {
+                          domProps: { textContent: _vm._s(m.message) }
+                        })
+                      ])
+                    ])
               ])
             }),
             0

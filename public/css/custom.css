@@ -9,3 +9,57 @@ a:hover {
 .post {
     background-color: #ffffff;
 }
+/* チャット吹き出し */
+.balloon1-right {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 7px 10px;
+  max-width: 400px;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+  border-radius: 5px;
+}
+
+.balloon1-right:before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 100%;
+  margin-top: -10px;
+  border: 10px solid transparent;
+  border-left: 10px solid #e0edff;
+}
+
+.balloon1-right p {
+  word-wrap: break-word;
+  margin: 0;
+  padding: 0;
+}
+.balloon1-left {
+  position: relative;
+  display: inline-block;
+  padding: 7px 10px;
+  max-width: 400px;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+  border-radius: 5px;
+}
+
+.balloon1-left:before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: -20px;
+  margin-top: -10px;
+  border: 10px solid transparent;
+  border-right: 10px solid #e0edff;
+}
+
+.balloon1-left p {
+  word-wrap: break-word;
+  margin: 0;
+  padding: 0;
+}
