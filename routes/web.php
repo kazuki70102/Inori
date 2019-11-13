@@ -51,7 +51,7 @@ Route::middleware('verified')->group(function() {
     Route::get('posts/driver', 'PostsController@driver')->name('posts.driver');
     Route::get('posts/rider', 'PostsController@rider')->name('posts.rider');
     Route::resource('posts', 'PostsController', [
-        'except' => ['index', 'destroy']
+        'except' => ['destroy']
     ]);
     Route::get('posts/{post}/delete', 'PostsController@destroy')
         ->name('posts.destroy');

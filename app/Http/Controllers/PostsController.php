@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
+    public function index()
+    {
+        $user = auth()->user();
+        $posts = Post::where('user_id' , $user->id)->with('user')->latest()->paginate(6);
+
+        return view('posts.index', compact('user', 'posts'));
+    }
+
     public function driver()
     {
         $user = auth()->user();
