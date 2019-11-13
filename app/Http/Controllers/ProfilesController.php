@@ -16,16 +16,14 @@ class ProfilesController extends Controller
     {
         $user = auth()->user();
         $posts = Post::with('user')->latest()->paginate(6);
-        $followersCount = FollowUser::where('followed_user_id', $user->id)->count();
-        $followingCount = FollowUser::where('user_id', $user->id)->count();
 
-        return view('profiles.index', compact('user', 'posts', 'followersCount', 'followingCount'));
+        return view('profiles.index', compact('user', 'posts'));
     }
 
     public function show(User $user)
     {
-        $followingCount = count($user->getfollowingUsers());
-        $followersCount = count($user->getfollowers());
+        $followingCount = count($user->getFollows());
+        $followersCount = count($user->getFollowers());
         return view('profiles.show', compact('user', 'followingCount', 'followersCount'));
     }
 
@@ -60,6 +58,20 @@ class ProfilesController extends Controller
 
         return redirect(route('profile.show', ['user' => $user]))
                 ->with('flash_message', 'プロフィールを更新しました！');
+    }
+
+    public function follows(User $user)
+    {
+        $follows = $user->getFollows();
+        $followingCount = count($user->getFollows());
+        $followersCount = count($user->getFollowers());
+
+        return view('profiles.follows', compact('user', 'follows', 'followingCount', 'followersCount'));
+    }
+
+    public function followers()
+    {
+
     }
 
 }

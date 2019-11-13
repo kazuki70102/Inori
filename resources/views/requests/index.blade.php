@@ -3,25 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-3 mt-5">
-            <div class="bg-white p-3">
-                <div class="d-flex pb-4 align-items-end">
-                    <img src="{{ $user->profile->profileImage() }}" class="rounded-circle mr-2" width="100">
-                    <div>
-                        <h4>{{ $user->name }}</h4>
-                        <p class="text-secondary m-0">
-                            {{ $user->profile->department }} {{ $user->profile->grade }}
-                        </p>
-                    </div>
-                </div>
-                <p>{{ $user->profile->introduction }}</p>
-                <a href="{{ route('profile.edit', ['user' => $user]) }}">プロフィール編集</a>
-                <a href="{{ route('posts.create') }}">投稿する</a>
-            </div>
-        </div>
-
-        <div class="col-md-8 offset-1">
-            <h2 class="mb-5">リクエスト</h2>
+        <div class="col-md-8 offset-2">
+            <h2 class="mb-5 orange">リクエスト一覧</h2>
             <div class="requests">
                 @foreach($requestedUsers as $requestedUser)
                     <div class="request w-100 d-flex p-3 mb-4 bg-white">
@@ -51,9 +34,6 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
-
-            <div class="d-flex justify-content-center">
             </div>
         </div>
     </div>

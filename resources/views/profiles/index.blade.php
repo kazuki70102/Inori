@@ -6,7 +6,7 @@
         <div class="col-md-3">
             <ul class="my-menus">
                 <li class="my-menu">
-                    <a href="{{ route('profile.edit', ['user' => $user]) }}">プロフィール</a>
+                    <a href="{{ route('profile.show', ['user' => $user]) }}">プロフィール</a>
                 </li>
                 <li class="my-menu">
                     <a href="{{ route('posts.create') }}">投稿する</a>
@@ -15,7 +15,7 @@
                     <a href="{{ route('matches.index') }}">マッチングリスト</a>
                 </li>
                 <li class="my-menu">
-                    <a href="{{ route('posts.create') }}">フォローリスト</a>
+                    <a href="{{ route('follows', ['user' => $user]) }}">フォローリスト</a>
                 </li>
                 <li class="my-menu">
                     <a href="{{ route('posts.create') }}">メッセージ</a>
@@ -23,6 +23,11 @@
                 <li class="my-menu">
                     <a href="{{ route('posts.create') }}">投稿リスト</a>
                 </li>
+                @if($user->role == 'driver')
+                    <li class="my-menu">
+                        <a href="{{ route('requests.index') }}">リクエスト一覧</a>
+                    </li>
+                @endif
             </ul>
         </div>
 

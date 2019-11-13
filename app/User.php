@@ -69,20 +69,20 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     // フォローしてるユーザーの取得
-    public function getfollowingUsers()
+    public function getFollows()
     {
         $data = FollowUser::where('user_id', $this->id)->get();
-        $followingUsers = [];
+        $follows = [];
 
         foreach($data as $line) {
-            array_push($followingUsers, User::find($line->followed_user_id));
+            array_push($follows, User::find($line->followed_user_id));
         }
 
-        return $followingUsers;
+        return $follows;
     }
 
     // フォロワーの取得
-    public function getfollowers()
+    public function getFollowers()
     {
         $data = FollowUser::where('followed_user_id', $this->id)->get();
         $followers = [];
@@ -101,7 +101,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     // リクエストされているユーザーの取得
-    public function getrequestedUsers()
+    public function getRequestedUsers()
     {
         $data = RequestUser::where('requested_user_id', $this->id)->get();
         $requestedUsers = [];

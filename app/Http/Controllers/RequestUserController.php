@@ -11,7 +11,7 @@ class RequestUserController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $requestedUsers = $user->getrequestedUsers();
+        $requestedUsers = $user->getRequestedUsers();
 
         return view('requests.index', compact('user', 'requestedUsers'));
     }
@@ -22,7 +22,7 @@ class RequestUserController extends Controller
         if ($user->MatchUsers->contains(auth()->user()->id)) {
             return redirect(route('posts.driver'));
         }
-        
+
         auth()->user()->requestUsers()->toggle($user->id);
 
         return redirect(route('posts.driver'))->with('flash_message', 'リクエストを送信しました');
