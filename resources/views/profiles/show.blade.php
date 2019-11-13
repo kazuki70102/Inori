@@ -23,7 +23,7 @@
                     <br>{{ $followersCount }}</p>
                 </div>
             </div>
-            <div>
+            <div class="mb-3">
                 @if(auth()->user()->requestUsers->contains($user->id))
                     <div class="btn btn-outline-primary w-100 mb-3">
                         リクエスト済み
@@ -40,10 +40,13 @@
                     follows="{{ auth()->user()->followUsers->contains($user->id) }}">
                 </follow-button>
             </div>
+            @can('update', $user->profile)
+                <a href="{{ route('profile.edit', ['user' => $user]) }}">プロフィールを編集する</a>
+            @endcan
         </div>
 
         <div class="col-md-7 offset-1">
-            <div class="bg-white p-3" style="height: 300px;">
+            <div class="bg-white p-4" style="height: 300px;">
                 {{ $user->profile->introduction }}
             </div>
         </div>
