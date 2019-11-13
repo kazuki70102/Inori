@@ -11,10 +11,14 @@
                         <h4 class="mr-5">{{ $post->user->name }}</h4>
                         <div class="d-flex">
                             @can('update', $post)
-                                <a href="{{ route('posts.edit', ['post' => $post]) }}" class="mr-2">編集</a>
+                                <a href="{{ route('posts.edit', ['post' => $post]) }}" class="mr-2 text-primary">
+                                    編集
+                                </a>
                             @endcan
                             @can('delete', $post)
-                                <a href="{{ route('posts.destroy', ['post' => $post]) }}" class="text-danger">削除</a>
+                                <a href="{{ route('posts.destroy', ['post' => $post]) }}" class="text-danger">
+                                    削除
+                                </a>
                             @endcan
                         </div>
                     </div>

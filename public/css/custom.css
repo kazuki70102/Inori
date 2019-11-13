@@ -6,6 +6,9 @@ ul {
 li {
     list-style: none;
 }
+a {
+    color: #212529;
+}
 a:hover {
     text-decoration: none!important;
 }

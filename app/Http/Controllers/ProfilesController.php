@@ -69,9 +69,13 @@ class ProfilesController extends Controller
         return view('profiles.follows', compact('user', 'follows', 'followingCount', 'followersCount'));
     }
 
-    public function followers()
+    public function followers(User $user)
     {
+        $follows = $user->getFollowers();
+        $followingCount = count($user->getFollows());
+        $followersCount = count($user->getFollowers());
 
+        return view('profiles.followers', compact('user', 'follows', 'followingCount', 'followersCount'));
     }
 
 }

@@ -53,7 +53,7 @@
 
         <div class="col-md-7 offset-1">
             <div class="posts px-4">
-                <h4 class="my-3 orange">フォローしてるユーザー</h4>
+                <h4 class="my-3 orange">フォロワー</h4>
                 @foreach($follows as $followUser)
                     <div class="post w-100 d-flex p-4 mb-4">
                         <a href="{{ route('profile.show', ['user' => $followUser]) }}">

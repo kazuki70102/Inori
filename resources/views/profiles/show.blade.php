@@ -15,12 +15,16 @@
             </div>
             <div class="d-flex text-center">
                 <div class="mr-4">
-                    <p>フォロー
-                    <br>{{ $followingCount }}</p>
+                    <a href="#">
+                        <p>フォロー
+                        <br>{{ $followingCount }}</p>
+                    </a>
                 </div>
                 <div>
-                    <p>フォロワー
-                    <br>{{ $followersCount }}</p>
+                    <a href="#">
+                        <p>フォロワー
+                        <br>{{ $followersCount }}</p>
+                    </a>
                 </div>
             </div>
             <div class="mb-3">
@@ -41,7 +45,9 @@
                 </follow-button>
             </div>
             @can('update', $user->profile)
-                <a href="{{ route('profile.edit', ['user' => $user]) }}">プロフィールを編集する</a>
+                <a href="{{ route('profile.edit', ['user' => $user]) }}" class="text-primary">
+                    プロフィールを編集する
+                </a>
             @endcan
         </div>
 
