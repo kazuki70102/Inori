@@ -11,7 +11,9 @@
                 <h4 class="my-3 orange">リクエスト一覧</h4>
                 @foreach($requestedUsers as $requestedUser)
                     <div class="request w-100 d-flex p-3 mb-4 bg-white">
-                        <img src="{{ $requestedUser->profile->profileImage() }}" class="rounded-circle mr-4" width="80" height="80">
+                        <a href="{{ route('profile.show', ['user' => $requestedUser]) }}">
+                            <img src="{{ $requestedUser->profile->profileImage() }}" class="rounded-circle mr-4" width="80" height="80">
+                        </a>
                         <div class="mt-2">
                             <h4 class="mb-0">{{ $requestedUser->name }}</h4>
                             <p class="text-secondary">

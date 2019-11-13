@@ -12,7 +12,9 @@
                 <h4 class="my-3 orange">マッチングしたユーザー</h4>
                 @foreach($matchUsers as $matchUser)
                     <div class="request w-100 d-flex p-3 mb-4 bg-white">
-                        <img src="{{ $matchUser->profile->profileImage() }}" class="rounded-circle mr-4" width="80" height="80">
+                        <a href="{{ route('profile.show', ['user' => $matchUser]) }}">
+                            <img src="{{ $matchUser->profile->profileImage() }}" class="rounded-circle mr-4" width="80" height="80">
+                        </a>
                         <div class="mt-2">
                             <h4 class="mb-0">{{ $matchUser->name }}</h4>
                             <p class="text-secondary">

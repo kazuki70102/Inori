@@ -9,7 +9,9 @@
                 <h2 class="mb-5 orange">ドライバーを探す</h2>
                 @foreach($posts as $post)
                     <div class="post w-100 d-flex p-4 mb-4">
-                        <img src="{{ $post->user->profile->profileImage() }}" class="rounded-circle mr-4" width="80" height="80">
+                        <a href="{{ route('profile.show', ['user' => $post->user]) }}">
+                            <img src="{{ $post->user->profile->profileImage() }}" class="rounded-circle mr-4" width="80" height="80">
+                        </a>
                         <div class="mr-3" style="width: 450px;">
                             <h5>{{ $post->user->name }}</h5>
                             <p class="text-secondary">

@@ -67,6 +67,14 @@
                                     <a class="dropdown-item" href="{{ route('profile.index') }}">
                                         マイページ
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('matches.index') }}">
+                                        マッチングリスト
+                                    </a>
+                                    @if(auth()->user()->role == 'driver')
+                                        <a class="dropdown-item" href="{{ route('requests.index') }}">
+                                            リクエスト一覧
+                                        </a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
