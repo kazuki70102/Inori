@@ -44,11 +44,6 @@
                     follows="{{ auth()->user()->followUsers->contains($user->id) }}">
                 </follow-button>
             </div>
-            @can('update', $user->profile)
-                <a href="{{ route('profile.edit', ['user' => $user]) }}" class="text-primary">
-                    プロフィールを編集する
-                </a>
-            @endcan
         </div>
 
         <div class="col-md-7 offset-1">

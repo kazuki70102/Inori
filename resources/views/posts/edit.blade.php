@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-8 offset-2">
                 <div class="row">
-                    <h1>投稿編集</h1>
+                    <h3 class="my-3 orange">投稿編集</h3>
                 </div>
                 <div class="form-group row">
                     <textarea id="content" name="content" rows="8" cols="80" class="form-control @error('content') is-invalid @enderror">{{ old('content') ?? $post->content }}</textarea>

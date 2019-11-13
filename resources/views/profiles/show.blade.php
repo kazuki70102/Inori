@@ -15,13 +15,13 @@
             </div>
             <div class="d-flex text-center">
                 <div class="mr-4">
-                    <a href="#">
+                    <a href="{{ route('follows', ['user' => $user]) }}">
                         <p>フォロー
                         <br>{{ $followingCount }}</p>
                     </a>
                 </div>
                 <div>
-                    <a href="#">
+                    <a href="{{ route('followers', ['user' => $user]) }}">
                         <p>フォロワー
                         <br>{{ $followersCount }}</p>
                     </a>

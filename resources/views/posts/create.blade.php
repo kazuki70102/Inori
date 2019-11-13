@@ -9,7 +9,7 @@
             <div class="col-8 offset-2">
 
                 <div class="row">
-                    <h1>新規投稿</h1>
+                    <h3 class="my-3 orange">新規投稿</h3>
                 </div>
 
                 <div class="form-group row">

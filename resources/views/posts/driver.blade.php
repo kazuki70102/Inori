@@ -6,7 +6,7 @@
 
         <div class="col-md-9 offset-2">
             <div class="posts px-4">
-                <h3 class="mb-3 orange">ドライバーを探す</h3>
+                <h2 class="mb-5 orange">ドライバーを探す</h2>
                 @foreach($posts as $post)
                     <div class="post w-100 d-flex p-4 mb-4">
                         <img src="{{ $post->user->profile->profileImage() }}" class="rounded-circle mr-4" width="80" height="80">

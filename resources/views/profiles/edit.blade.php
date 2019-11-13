@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-8 offset-2">
                 <div class="row">
-                    <h1>プロフィール編集</h1>
+                    <h3 class="my-3 orange">プロフィール編集</h3>
                 </div>
                 <div class="form-group row">
                     <label for="department" class="col-md-4 col-form-label">学類</label>

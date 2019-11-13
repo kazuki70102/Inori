@@ -4,9 +4,12 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 offset-2">
-            <h2 class="mb-5 orange">マッチングしたユーザー</h2>
+
+        @include('shared.sidebar')
+
+        <div class="col-md-9">
             <div class="requests">
+                <h4 class="my-3 orange">マッチングしたユーザー</h4>
                 @foreach($matchUsers as $matchUser)
                     <div class="request w-100 d-flex p-3 mb-4 bg-white">
                         <img src="{{ $matchUser->profile->profileImage() }}" class="rounded-circle mr-4" width="80" height="80">

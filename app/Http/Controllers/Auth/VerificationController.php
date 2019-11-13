@@ -25,7 +25,12 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // protected $redirectTo = '/profile';
+    public function redirectTo()
+    {
+        \Session::flash('flash_message', '本登録が完了しました！');
+        return '/profile';
+    }
 
     /**
      * Create a new controller instance.

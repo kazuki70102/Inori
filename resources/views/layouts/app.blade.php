@@ -26,7 +26,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a id="logo" class="mr-5" href="{{ url('/') }}">
+                <a id="logo" class="mr-5" href="{{ route('profile.index') }}">
                     Inori
                 </a>
                 <a href="{{ route('posts.driver') }}" class="nav-text mr-3">
