@@ -41,6 +41,7 @@ Route::middleware('verified')->group(function() {
 
     // プロフィール
     Route::get('profile', 'ProfilesController@index')->name('profile.index');
+    Route::get('profile/{user}', 'ProfilesController@show')->name('profile.show');
     Route::get('profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
     Route::patch('profile/{user}/edit', 'ProfilesController@update')->name('profile.update');
 

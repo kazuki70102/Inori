@@ -5,8 +5,8 @@
     <div class="row">
 
         <div class="col-md-9 offset-2">
-            <h2 class="mb-5">ドライバー募集</h2>
             <div class="posts px-4">
+                <h3 class="mb-3 orange">ドライバー募集</h3>
                 @foreach($posts as $post)
                     <div class="post w-100 d-flex p-4 mb-4">
                         <img src="{{ $post->user->profile->profileImage() }}" class="rounded-circle mr-4" width="80" height="80">

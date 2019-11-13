@@ -28,9 +28,9 @@
                         <div class="d-flex">
                             @if($post->user_role == 'driver')
                                 @if($user->requestUsers->contains($post->user->id))
-                                    <form action="{{ route('requests.store', ['user' => $post->user]) }}" method="post">
+                                    <form action="{{ route('requests.store', ['user' => $post->user]) }}" method="post" class="mr-3">
                                         @csrf
-                                        <button class="btn btn-outline-primary mb-3">
+                                        <button class="btn btn-outline-primary">
                                             リクエスト
                                         </button>
                                     </form>
@@ -41,7 +41,8 @@
                                 @endif
                             @endif
                             <follow-button user-id="{{ $post->user->id }}"
-                                follows="{{ $user->followUsers->contains($post->user->id) }}"></follow-button>
+                                follows="{{ $user->followUsers->contains($post->user->id) }}">
+                            </follow-button>
                         </div>
                     @endif
                 </div>

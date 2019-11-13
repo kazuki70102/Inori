@@ -22,6 +22,13 @@ class ProfilesController extends Controller
         return view('profiles.index', compact('user', 'posts', 'followersCount', 'followingCount'));
     }
 
+    public function show(User $user)
+    {
+        $followingCount = count($user->getfollowingUsers());
+        $followersCount = count($user->getfollowers());
+        return view('profiles.show', compact('user', 'followingCount', 'followersCount'));
+    }
+
     public function edit(User $user)
     {
         $this->authorize('update', $user->profile);

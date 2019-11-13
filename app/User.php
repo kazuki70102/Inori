@@ -4,6 +4,7 @@ namespace App;
 
 use App\Notifications\VerifyEmailNotification;
 use App\Notifications\ResetPasswordNotification;
+use App\FollowUser;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -65,6 +66,32 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(self::class, 'follow_users', 'user_id', 'followed_user_id')
             ->using(FollowUser::class);
+    }
+
+    // フォローしてるユーザーの取得
+    public function getfollowingUsers()
+    {
+        $data = FollowUser::where('user_id', $this->id)->get();
+        $followingUsers = [];
+
+        foreach($data as $line) {
+            array_push($followingUsers, User::find($line->followed_user_id));
+        }
+
+        return $followingUsers;
+    }
+
+    // フォロワーの取得
+    public function getfollowers()
+    {
+        $data = FollowUser::where('followed_user_id', $this->id)->get();
+        $followers = [];
+
+        foreach($data as $line) {
+            array_push($followers, User::find($line->user_id));
+        }
+
+        return $followers;
     }
 
     public function requestUsers()

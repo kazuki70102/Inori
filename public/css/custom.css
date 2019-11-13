@@ -1,5 +1,11 @@
 @charset "utf-8";
 
+ul {
+    padding: 0;
+}
+li {
+    list-style: none;
+}
 a:hover {
     text-decoration: none!important;
 }
@@ -8,6 +14,22 @@ a:hover {
 }
 .post {
     background-color: #ffffff;
+}
+.orange {
+    color: #e9a64c;
+}
+
+/* ナビバー */
+#logo {
+    color: #e9a64c;
+    line-height: 50px;
+    font-size: 40px;
+    font-weight: bold;
+}
+.nav-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #e9a64c;
 }
 /* チャット吹き出し */
 .balloon1-right {
@@ -62,4 +84,38 @@ a:hover {
   word-wrap: break-word;
   margin: 0;
   padding: 0;
+}
+/* マイページ */
+.my-menus {
+    padding-top: 10px;
+}
+.my-menus .my-menu {
+    padding-bottom: 15px;
+}
+.my-menus .my-menu a {
+    font-size: 16px;
+    color: #444444;
+}
+.my-menus .my-menu a:hover {
+    color: #e9a64c;
+}
+/* プロフィールページ */
+.profile-top {
+    height: 150px;
+    position: relative;
+    background-color: #e9a64c;
+    margin-top: -30px;
+}
+.profile-top h1 {
+    color: #fff;
+    font-weight: bold;
+    padding-top: 80px;
+    padding-left: 300px;
+}
+.profile-top img {
+    width: 150px;
+    position: absolute;
+    bottom: -50%;
+    left: 80px;
+    border: 5px solid #f8fafc;
 }
