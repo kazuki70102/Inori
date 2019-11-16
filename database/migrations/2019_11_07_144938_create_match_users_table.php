@@ -15,8 +15,8 @@ class CreateMatchUsersTable extends Migration
     {
         Schema::create('match_users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('driver_id');
-            $table->unsignedInteger('rider_id');
+            $table->unsignedBigInteger('driver_id');
+            $table->unsignedBigInteger('rider_id');
 
             $table->foreign('driver_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('rider_id')->references('id')->on('users')->onDelete('cascade');

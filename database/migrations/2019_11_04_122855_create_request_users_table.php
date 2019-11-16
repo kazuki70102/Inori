@@ -14,8 +14,8 @@ class CreateRequestUsersTable extends Migration
     public function up()
     {
         Schema::create('request_users', function (Blueprint $table) {
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('requested_user_id')->index();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('requested_user_id')->index();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('requested_user_id')->references('id')->on('users')->onDelete('cascade');
