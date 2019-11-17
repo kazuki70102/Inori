@@ -3,7 +3,7 @@
 
         <div id="target" style="height: 420px; overflow: scroll;">
             <div v-for="m in messages" class="mb-3">
-                <div v-if="m.send_user_id === matchUserId" class="d-flex">
+                <div v-if="m.send_user_id == matchUserId" class="d-flex">
                     <img v-bind:src="matchUserImage" width="40" height="40" class="rounded-circle mr-3">
                     <div class="balloon1-left">
                       <p v-text="m.message"></p>

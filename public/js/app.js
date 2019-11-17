@@ -47134,7 +47134,7 @@ var render = function() {
         },
         _vm._l(_vm.messages, function(m) {
           return _c("div", { staticClass: "mb-3" }, [
-            m.send_user_id === _vm.matchUserId
+            m.send_user_id == _vm.matchUserId
               ? _c("div", { staticClass: "d-flex" }, [
                   _c("img", {
                     staticClass: "rounded-circle mr-3",
