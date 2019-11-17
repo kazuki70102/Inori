@@ -43,13 +43,13 @@ class ProfileTest extends TestCase
         $response = $this->actingAs($this->user);
         $response = $this->json('PATCH', route('profile.update', ['user' => $this->user]), $data);
 
-        $response->assertRedirect(route('profile.index'));
+        $response->assertRedirect(route('profile.show', ['user' => $this->user]));
         $this->assertDatabaseHas('profiles', [
             'user_id' => $this->user->id,
             'department' => '経済学類',
             'grade' => '4年生',
             'introduction' => 'こんにちは',
-            'image' => 'profile/' . $file->hashName()
+            'image' => "https://inori-app.s3.ap-northeast-1.amazonaws.com/myimage/" . $file->hashName()
         ]);
 
     }
