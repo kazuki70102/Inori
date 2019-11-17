@@ -32,7 +32,7 @@ class AuthenticationTest extends TestCase
             'password' => 'password',
         ]);
 
-        $response->assertRedirect(route('home'));
+        $response->assertRedirect(route('profile.index'));
 
         $this->assertAuthenticatedAs($this->user);
 
