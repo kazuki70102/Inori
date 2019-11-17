@@ -8,6 +8,7 @@ use App\FollowUser;
 use App\RequestUser;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProfilesController extends Controller
 {
@@ -24,7 +25,7 @@ class ProfilesController extends Controller
     {
         $followingCount = count($user->getFollows());
         $followersCount = count($user->getFollowers());
-        
+
         return view('profiles.show', compact('user', 'followingCount', 'followersCount'));
     }
 
@@ -47,8 +48,9 @@ class ProfilesController extends Controller
         ]);
 
         if (request('image')) {
-            // 画像をパブリックディスクのstorage/profile下に保存
-            $imagePath = request('image')->store('profile', 'public');
+            // 画像を保存
+            $path = Storage::disk('s3')->putFile('myimage', request('image'), 'public');
+            $imagePath = Storage::disk('s3')->url($path);
             $imageArray = ['image' => $imagePath];
         }
 

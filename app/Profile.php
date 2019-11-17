@@ -11,8 +11,8 @@ class Profile extends Model
 
     public function profileImage()
     {
-        $imagePath = ($this->image) ? $this->image : 'profile/noimage.png';
-        return '/storage/' . $imagePath;
+        $imagePath = ($this->image) ? $this->image : 'https://inori-app.s3-ap-northeast-1.amazonaws.com/myimage/noimage.png';
+        return $imagePath;
     }
 
     public function user()
