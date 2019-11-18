@@ -14,9 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+// 認証系
 Auth::routes(['verify' => true]);
 
+// 投稿
+Route::get('posts/driver', 'PostsController@driver')->name('posts.driver');
+Route::get('posts/rider', 'PostsController@rider')->name('posts.rider');
 
 
 
@@ -47,8 +50,6 @@ Route::middleware('verified')->group(function() {
     Route::patch('profile/{user}/edit', 'ProfilesController@update')->name('profile.update');
 
     // 投稿
-    Route::get('posts/driver', 'PostsController@driver')->name('posts.driver');
-    Route::get('posts/rider', 'PostsController@rider')->name('posts.rider');
     Route::resource('posts', 'PostsController', [
         'except' => ['destroy']
     ]);

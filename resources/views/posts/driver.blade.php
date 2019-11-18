@@ -23,7 +23,7 @@
                             </a>
                             <p class="text-secondary">{{ $post->created_at }}</p>
                         </div>
-                        @if(auth()->user()->id != $post->user->id)
+                        @if(auth()->user() && auth()->user()->id != $post->user->id)
                             <div style="width: 130px;">
                                 @if($user->requestUsers->contains($post->user->id))
                                     <div class="btn btn-outline-primary w-100 mb-3">

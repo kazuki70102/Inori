@@ -24,11 +24,17 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="z-index: 1;">
             <div class="container">
-                <a id="logo" class="mr-5" href="{{ route('profile.index') }}">
-                    Inori
-                </a>
+                @guest                    
+                    <a id="logo" class="mr-5" href="/">
+                        Inori
+                    </a>
+                @else
+                    <a id="logo" class="mr-5" href="{{ route('profile.index') }}">
+                        Inori
+                    </a>
+                @endguest
                 <a href="{{ route('posts.driver') }}" class="nav-text mr-3">
                     ドライバーを探す
                 </a>

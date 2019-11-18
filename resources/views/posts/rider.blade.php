@@ -23,7 +23,7 @@
                             </a>
                             <p class="text-secondary">{{ $post->created_at }}</p>
                         </div>
-                        @if(auth()->user()->id != $post->user->id)
+                        @if(auth()->user() && auth()->user()->id != $post->user->id)
                             <div style="width: 130px;">
                                 <follow-button user-id="{{ $post->user->id }}"
                                     follows="{{ $user->followUsers->contains($post->user->id) }}">
