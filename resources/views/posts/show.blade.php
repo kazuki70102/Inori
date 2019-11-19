@@ -50,7 +50,35 @@
                         </div>
                     @endif
                 </div>
+            </div>
+            <div class="comments w-100 bg-white px-5 py-4">
+                <div class="comment mb-5">
+                    <div class="mb-3">
+                        <div class="d-flex">
+                            <img src="https://inori-app.s3-ap-northeast-1.amazonaws.com/myimage/noimage.png" width="50" height="50" class="rounded-circle mr-3">
+                            <div class="balloon2">
+                                <span class="ml-3">name</span>
+                                <div class="chatting">
+                                  <div class="says">
+                                    <p>左ふきだし文</p>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="" action="" method="post">
+                    <div class="form-group row">
+                        <textarea id="comment" name="comment" rows="4" cols="80" class="mx-3 form-control @error('comment') is-invalid @enderror">{{ old('comment') ?? $user->profile->comment }}</textarea>
 
+                        @error('comment')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <button name="button" class="w-100 btn btn-secondary">コメントする</button>
+                </form>
             </div>
         </div>
     </div>
