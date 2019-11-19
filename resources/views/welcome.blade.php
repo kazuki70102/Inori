@@ -33,4 +33,8 @@
         </div>
         <a href="{{ route('register') }}" class="btn btn-primary btn-lg py-3 px-5">さっそく始める！</a>
     </div>
+    <div class="text-center">
+        <a href="/terms" class="mr-3">利用規約</a>
+        <a href="/privacy">プライバシーポリシー</a>
+    </div>
 @endsection
