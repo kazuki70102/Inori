@@ -21,6 +21,10 @@ Route::get('terms', function () {
     return view('terms');
 });
 
+Route::get('privacy', function () {
+    return view('privacy');
+});
+
 
 // 認証系
 Auth::routes(['verify' => true]);
