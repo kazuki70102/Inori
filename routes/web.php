@@ -11,9 +11,17 @@
 |
 */
 
+// トップ
 Route::get('/', function () {
     return view('welcome');
 });
+
+// 利用規約・プライバシーポリシー
+Route::get('terms', function () {
+    return view('terms');
+});
+
+
 // 認証系
 Auth::routes(['verify' => true]);
 
