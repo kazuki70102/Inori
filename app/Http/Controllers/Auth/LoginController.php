@@ -66,7 +66,7 @@ class LoginController extends Controller
     public function handleProviderCallback($provider)
     {
         try {
-            $providerUser = \Socialite::with($provider)->stateless()->user();
+            $providerUser = \Socialite::with($provider)->userFromTokenAndSecret(env('TWITTER_ACCESS_TOKEN'), env('TWITTER_ACCESS_TOKEN_SECRET'));
         } catch(\Exception $e) {
             return redirect('/login')->with('oauth_error', '予期せぬエラーが発生しました');
         }
