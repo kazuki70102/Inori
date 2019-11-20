@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 use App\User;
 use Auth;
+use Carbon\Carbon;
 
 class LoginController extends Controller
 {
@@ -82,7 +83,8 @@ class LoginController extends Controller
             $newUser = User::create([
                 'name' => $providerUser->getName(),
                 'email' => $providerUser->getEmail(),
-                'role' => 'rider'
+                'role' => 'rider',
+                'email_verified_at' => Carbon::now()
             ]);
 
             Auth::login($newUser);
