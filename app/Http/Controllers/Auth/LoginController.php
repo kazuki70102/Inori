@@ -86,8 +86,8 @@ class LoginController extends Controller
                 'role' => 'rider',
             ]);
             $newUser->email_verified_at = Carbon::now();
+            $newUser->save();
 
-            
             Auth::login($newUser);
             return redirect('/profile');
         }
