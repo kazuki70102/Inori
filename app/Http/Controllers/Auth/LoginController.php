@@ -72,7 +72,7 @@ class LoginController extends Controller
         }
 
         if ($email = $providerUser->getEmail()) {
-            $this->redirectTo();
+            return redirect('/profile');
         } else {
             \Session::flash('oauth_error', 'メールアドレスを取得できませんでした。');
             return '/profile';
