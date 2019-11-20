@@ -78,6 +78,8 @@ class LoginController extends Controller
 
         if ($user) {
             Auth::login($user);
+
+            \Session::flash('flash_message', 'ログインしました！');
             return redirect('/profile');
         } else {
             $newUser = User::create([
@@ -89,6 +91,8 @@ class LoginController extends Controller
             $newUser->save();
 
             Auth::login($newUser);
+
+            \Session::flash('flash_message', 'ログインしました！');
             return redirect('/profile');
         }
     }
