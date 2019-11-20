@@ -72,13 +72,6 @@ class LoginController extends Controller
         }
 
         if ($email = $providerUser->getEmail()) {
-            Auth::login(User::firstOrCreate([
-                'email' => $email
-            ], [
-                'name' => $providerUser->getName(),
-                'role' => 'rider',
-                'email_verified_at' => now()
-            ]));
 
             return $this->redirectTo();
         } else {
