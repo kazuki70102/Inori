@@ -70,6 +70,20 @@ class LoginController extends Controller
         } catch(\Exception $e) {
             return redirect('/login')->with('oauth_error', '予期せぬエラーが発生しました');
         }
+        dd($providerUser);
+        if ($email = $providerUser->getEmail()) {
+            Auth::login(User::firstOrCreate([
+                'email' => $email
+            ], [
+                'name' => $providerUser->getName(),
+                'role' => 'rider'
+            ]));
 
+            return redirect(route('profile.index'))
+                    ->with('flash_message', 'ログインしました！');
+        } else {
+            return redirect(route('login'))
+                    ->with('oauth_error',  'メールアドレスが取得できませんでした');
+        }
     }
 }
