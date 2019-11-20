@@ -84,7 +84,7 @@ class LoginController extends Controller
                 'name' => $providerUser->getName(),
                 'email' => $providerUser->getEmail(),
                 'role' => 'rider',
-                'email_verified_at' => Carbon::now()
+                'email_verified_at' => now()
             ]);
             dd($newUser);
             Auth::login($newUser);
