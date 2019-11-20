@@ -68,6 +68,11 @@ Route::middleware('verified')->group(function() {
     Route::get('posts/{post}/delete', 'PostsController@destroy')
         ->name('posts.destroy');
 
+    // コメント
+    Route::resource('comments', 'CommentController', [
+        'only' => ['store']
+    ]);
+
     // マッチ
     Route::get('matches', 'MatchUserController@index')->name('matches.index');
     Route::post('matches', 'MatchUserController@store')->name('matches.store');

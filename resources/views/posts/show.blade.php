@@ -51,23 +51,29 @@
                     @endif
                 </div>
             </div>
+
             <div class="comments w-100 bg-white px-5 py-4">
-                <div class="comment mb-5">
-                    <div class="mb-3">
-                        <div class="d-flex">
-                            <img src="https://inori-app.s3-ap-northeast-1.amazonaws.com/myimage/noimage.png" width="50" height="50" class="rounded-circle mr-3">
+                @foreach($comments as $comment)
+                    <div class="comment mb-5">
+                        <div class="d-flex mb-3">
+                            <a href="{{ route('profile.show', ['user' => $comment->user]) }}">
+                                <img src="{{ $comment->user->profile->profileImage() }}" width="50" height="50" class="rounded-circle mr-3">
+                            </a>
                             <div class="balloon2">
-                                <span class="ml-3">name</span>
+                                <span class="ml-3">{{ $comment->user->name }}</span>
                                 <div class="chatting">
                                   <div class="says">
-                                    <p>左ふきだし文</p>
+                                    <p>{{ $comment->comment }}</p>
                                   </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <form class="" action="" method="post">
+                @endforeach
+
+                <form class="" action="{{ route('comments.store') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="post_id" value="{{ $post->id }}">
                     <div class="form-group row">
                         <textarea id="comment" name="comment" rows="4" cols="80" class="mx-3 form-control @error('comment') is-invalid @enderror">{{ old('comment') ?? $user->profile->comment }}</textarea>
 
