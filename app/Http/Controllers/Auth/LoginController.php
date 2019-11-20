@@ -67,6 +67,7 @@ class LoginController extends Controller
     {
         try {
             $providerUser = \Socialite::driver($provider)->user();
+            dd($providerUser);
         } catch(\Exception $e) {
             return redirect('/login')->with('oauth_error', '予期せぬエラーが発生しました');
         }
