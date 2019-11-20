@@ -66,11 +66,11 @@ class LoginController extends Controller
     public function handleProviderCallback($provider)
     {
         try {
-            $providerUser = \Socialite::with($provider)->user();
+            $providerUser = \Socialite::with($provider)->stateless()->user();
         } catch(\Exception $e) {
             return redirect('/login')->with('oauth_error', '予期せぬエラーが発生しました');
         }
-        dd($providerUser);
+
         if ($email = $providerUser->getEmail()) {
             Auth::login(User::firstOrCreate([
                 'email' => $email
