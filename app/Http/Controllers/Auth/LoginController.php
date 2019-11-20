@@ -67,7 +67,6 @@ class LoginController extends Controller
     {
         try {
             $providerUser = \Socialite::driver($provider)->user();
-            dd($providerUser);
         } catch(\Exception $e) {
             return redirect('/login')->with('oauth_error', '予期せぬエラーが発生しました');
         }
@@ -77,14 +76,14 @@ class LoginController extends Controller
                 'email' => $email
             ], [
                 'name' => $providerUser->getName(),
-                'role' => 'rider'
+                'role' => 'rider',
+                'email_verified_at' => now()
             ]));
 
-            return redirect(route('profile.index'))
-                    ->with('flash_message', 'ログインしました！');
+            return $this->redirectTo();
         } else {
-            return redirect(route('login'))
-                    ->with('oauth_error',  'メールアドレスが取得できませんでした');
+            \Session::flash('oauth_error', 'メールアドレスを取得できませんでした。');
+            return '/profile';
         }
     }
 }
