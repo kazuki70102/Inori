@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
+use App\User;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -71,11 +73,20 @@ class LoginController extends Controller
             return redirect('/login')->with('oauth_error', '予期せぬエラーが発生しました');
         }
 
-        if ($email = $providerUser->getEmail()) {
+        $user = User::where(['email' => $providerUser->getEmail()])->first();
+
+        if ($user) {
+            Auth::login($user);
             return redirect('/profile');
         } else {
-            \Session::flash('oauth_error', 'メールアドレスを取得できませんでした。');
-            return '/profile';
+            $newUser = User::create([
+                'name' => $providerUser->getName(),
+                'email' => $providerUser->getEmail(),
+                'role' => 'rider'
+            ]);
+
+            Auth::login($newUser);
+            return redirect('/profile');
         }
     }
 }
