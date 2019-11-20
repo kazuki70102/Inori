@@ -99,13 +99,13 @@
         </nav>
 
         @if (session('flash_message'))
-            <div class="flash_message alert alert-warning text-center py-3 my-0">
+            <div class="flash_message alert alert-success text-center py-3 my-0">
                 {{ session('flash_message') }}
             </div>
         @endif
 
         @if (session('oauth_error'))
-            <div class="flash_message alert alert-success text-center py-3 my-0">
+            <div class="flash_message alert alert-warning text-center py-3 my-0">
                 {{ session('oauth_error') }}
             </div>
         @endif
