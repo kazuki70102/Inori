@@ -84,7 +84,7 @@ class LoginController extends Controller
                 'name' => $providerUser->getName(),
                 'email' => $providerUser->getEmail(),
                 'role' => 'rider',
-                'email_verified_at' => now()
+                'email_verified_at' => "2019-11-20 14:40:08"
             ]);
             dd($newUser);
             Auth::login($newUser);
