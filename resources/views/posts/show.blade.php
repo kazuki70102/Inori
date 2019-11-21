@@ -32,16 +32,16 @@
                         <div class="d-flex">
                             @if($post->user_role == 'driver')
                                 @if($user->requestUsers->contains($post->user->id))
+                                    <div class="btn btn-outline-primary mb-3 mr-3">
+                                        リクエスト済み
+                                    </div>
+                                @else
                                     <form action="{{ route('requests.store', ['user' => $post->user]) }}" method="post" class="mr-3">
                                         @csrf
                                         <button class="btn btn-outline-primary">
                                             リクエスト
                                         </button>
                                     </form>
-                                @else
-                                    <div class="btn btn-outline-primary mb-3 mr-3">
-                                        リクエスト済み
-                                    </div>
                                 @endif
                             @endif
                             <follow-button user-id="{{ $post->user->id }}"
