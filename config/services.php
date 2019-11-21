@@ -36,4 +36,10 @@ return [
         'redirect' => env('TWITTER_CLIENT_CALLBACK')
     ],
 
+    'facebook' => [
+        'client_id' => env('FACEBOOK_APP_ID'),
+        'client_secret' => env('FACEBOOK_APP_SECRET'),
+        'redirect' => env('FACEBOOK_CALLBACK_URL')
+    ],
+
 ];
