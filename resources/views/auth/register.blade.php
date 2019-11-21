@@ -84,10 +84,15 @@
                             </div>
                         </div>
                     </form>
-                    <div class="providers pt-5 text-center">
-                        <a href="{{ route('login.provider', ['provider' => 'twitter']) }}" class="twitter ml-5">
+                    <div class="providers pt-5 pl-5 text-center">
+                        <a href="{{ route('login.provider', ['provider' => 'twitter']) }}" class="twitter mb-3">
                             <img src="{{ asset("/img/twitter.png") }}" width="20" class="mr-2">
-                            twitterでログイン
+                            twitterで登録
+                        </a>
+                        <br>
+                        <a href="{{ route('login.provider', ['provider' => 'facebook']) }}" class="facebook mb-3">
+                            <img src="{{ asset("/img/facebook.png") }}" width="20" class="mr-2">
+                            facebookで登録
                         </a>
                     </div>
                 </div>

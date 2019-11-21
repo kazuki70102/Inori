@@ -188,3 +188,14 @@ textarea {
     opacity: 0.8;
     color: #fff;
 }
+.facebook {
+    display: inline-block;
+    width: 300px;
+    padding: 10px;
+    background-color: #3B5998;
+    color: #fff;
+}
+.facebook:hover {
+    opacity: 0.8;
+    color: #fff;
+}
