@@ -76,6 +76,18 @@
                             facebookでログイン
                         </a>
                     </div>
+                    <div class="example pt-5">
+                        <p>ログイン用ユーザー</p>
+                        <span>ドライバー</span>
+                        <br>
+                        <span>メールアドレス: driver@test.com</span>
+                        <span>パスワード: password</span>
+                        <br>
+                        <span>ライダー</span>
+                        <br>
+                        <span>メールアドレス: rider@test.com</span>
+                        <span>パスワード: password</span>
+                    </div>
                 </div>
             </div>
         </div>

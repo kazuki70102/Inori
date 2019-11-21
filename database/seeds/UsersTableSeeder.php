@@ -13,8 +13,8 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $user = [
-            'name' => 'testUser',
-            'email' => 'test@test.com',
+            'name' => 'testDriver',
+            'email' => 'driver@test.com',
             'role' => 'driver',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
@@ -33,8 +33,8 @@ class UsersTableSeeder extends Seeder
             'updated_at' => now(),
         ];
         $user3 = [
-            'name' => 'testUser3',
-            'email' => 'test3@test.com',
+            'name' => 'testRider',
+            'email' => 'rider@test.com',
             'role' => 'rider',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
