@@ -28,7 +28,8 @@ Route::get('privacy', function () {
 
 // 認証系
 Auth::routes(['verify' => true]);
-Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider')
+        ->name('login.provider');
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
 // 投稿

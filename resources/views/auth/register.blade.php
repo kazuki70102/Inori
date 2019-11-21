@@ -84,6 +84,12 @@
                             </div>
                         </div>
                     </form>
+                    <div class="providers pt-5 text-center">
+                        <a href="{{ route('login.provider', ['provider' => 'twitter']) }}" class="twitter ml-5">
+                            <img src="{{ asset("/img/twitter.png") }}" width="20" class="mr-2">
+                            twitterでログイン
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
