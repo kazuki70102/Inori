@@ -7,7 +7,7 @@
             <div class="col-md-6" style="padding-top: 200px;">
                 <h1 class="orange" style="font-size: 80px;">Inori</h1>
                 <p style="font-size: 30px;">
-                    Inoriは同じ大学に通うドライバーとライダーをつなげ、学生間の交流を深めるためのマッチングサイトです。
+                    Inori（アイノリ）は同じ大学に通うドライバーとライダーをつなげ、学生間の交流を深めるためのマッチングサイトです。
                 </p>
                 <a href="{{ route('posts.driver') }}" class="btn btn-lg btn-primary mr-3">ドライバーを探す</a>
                 <a href="{{ route('posts.rider') }}" class="btn btn-lg btn-outline-success">ライダーを探す</a>
