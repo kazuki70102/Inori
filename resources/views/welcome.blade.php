@@ -5,7 +5,7 @@
                 background-repeat: no-repeat; margin-top: -100px;">
         <div class="container">
             <div class="col-md-6" style="padding-top: 200px;">
-                <h1 class="orange" style="font-size: 80px;">Inori</h1>
+                <h1 class="orange" style="font-size: 80px;">Inori(アイノリ)</h1>
                 <p style="font-size: 30px;">
                     Inori（アイノリ）は同じ大学に通うドライバーとライダーをつなげ、学生間の交流を深めるためのマッチングサイトです。
                 </p>
